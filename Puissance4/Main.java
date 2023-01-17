@@ -46,17 +46,7 @@ public class Main {
                 }
             }
             while(true){
-                try (Scanner scan = new Scanner(System.in)) {
-                    System.out.println("\nJoueur 1, choisissez votre pseudo\n");
-                    String player1Name = scan.nextLine();
-                    System.out.println("\nJoueur 1, choisissez votre symbole\n");
-                    char player1Symbol = scan.nextLine().charAt(0);
-                    System.out.println("\nJoueur 2, choisissez votre pseudo\n");
-                    String player2Name = scan.nextLine();
-                    System.out.println("\nJoueur 2, choisissez votre symbole\n");
-                    char player2Symbol = scan.nextLine().charAt(0);
-                }
-                break;
+                
             }
         }
     }

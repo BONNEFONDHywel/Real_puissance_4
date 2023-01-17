@@ -4,6 +4,19 @@ import java.util.Scanner;
 
 public class Plateau {
 
+    public static void name(String[] player) {
+        try (Scanner scan = new Scanner(System.in)) {
+            System.out.println("\nJoueur 1, choisissez votre pseudo\n");
+            String player1Name = scan.nextLine();
+            System.out.println("\nJoueur 1, choisissez votre symbole\n");
+            char player1Symbol = scan.nextLine().charAt(0);
+            System.out.println("\nJoueur 2, choisissez votre pseudo\n");
+            String player2Name = scan.nextLine();
+            System.out.println("\nJoueur 2, choisissez votre symbole\n");
+            char player2Symbol = scan.nextLine().charAt(0);
+        }
+    }
+
     public static void main(String[] args) {
 		try (Scanner in = new Scanner(System.in)) {
             char[][] grid = new char[6][7];
