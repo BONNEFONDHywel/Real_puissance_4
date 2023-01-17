@@ -1,3 +1,7 @@
+package Puissance4;
+
+import Puissance4.Class.Plateau;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -25,7 +29,17 @@ public class Menu {
                     if (option < 1 || option > 4) {
                         System.out.println("\nS'il vous plaît, entrez un chiffre compris entre 1 et 4.");
                     } else if(option == 1){
-                        System.out.println("\nVous avez choisi l'option 1.");
+                        try (Scanner scan = new Scanner(System.in)) {
+                            System.out.println("\nJoueur 1, choisissez votre pseudo\n");
+                            String player1Name = scan.nextLine();
+                            System.out.println("\nJoueur 1, choisissez votre symbole\n");
+                            char player1Symbol = scan.nextLine().charAt(0);
+                            System.out.println("\nJoueur 2, choisissez votre pseudo\n");
+                            String player2Name = scan.nextLine();
+                            System.out.println("\nJoueur 2, choisissez votre symbole\n");
+                            char player2Symbol = scan.nextLine().charAt(0);
+                        }
+                        Plateau.gridScreen(7, 6);
                     } else if(option == 2){
                         System.out.println("\nVous avez choisi l'option 2.");
                     } else if(option == 3){
@@ -37,11 +51,11 @@ public class Menu {
                     scanner.next();
                 }
                 catch (Exception ex){
-                    System.out.println("\nUne erreur inconnue est apparue. Réessayer encore, s'il vous plaît.");
+                    System.out.println("\nUne erreur inconnue est apparue. Réessayez encore, s'il vous plaît.");
                     scanner.next();
                 }
             }
-            System.out.println("\nMerci d'avoir utilisé notre programme. Nous vous souhaitons une excellente journée.\n");
+            System.out.println("\nMerci d'avoir utilisé notre programme ! Nous vous souhaitons une excellente journée. !\n");
         }
     }
 }

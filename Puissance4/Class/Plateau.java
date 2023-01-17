@@ -1,6 +1,8 @@
+package Puissance4.Class;
+
 public class Plateau {
     
-    static void gridScreen(int gridSize, int cellSize) {
+    public static void gridScreen(int gridSize, int cellSize) {
         int total = gridSize*cellSize;
         char c;
         for(int i=0; i <= total; i++){
@@ -14,9 +16,6 @@ public class Plateau {
             }
             System.out.println();
         }
-    }
-    public static void main(String[] args) {
-        gridScreen(7, 6);
     }
 
 }
