@@ -5,7 +5,7 @@ import Puissance4.Class.Plateau;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Menu {
+public class Main {
     
     public static void printMenu(String[] options){
         for (String option : options){
