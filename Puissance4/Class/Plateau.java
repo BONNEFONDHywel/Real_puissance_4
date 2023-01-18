@@ -52,12 +52,12 @@ public class Plateau {
                     play = in.nextInt()-1;
 					System.out.println(' ');
             		
-					// Appelle la fonction pour vérifier 
+					// Appelle la fonction validate en-dessous pour vérifier ses conditions
             		validPlay = validate(play,grid);
             		
             	}while (validPlay == false);
             	
-            	// 
+            	// Si les conditions de la fonction validate ne sont pas remplies, placer le pion du joueur dans la colonne respective
             	for (int row = grid.length-1; row >= 0; row--){
             		if(grid[row][play] == ' '){
             			grid[row][play] = player;

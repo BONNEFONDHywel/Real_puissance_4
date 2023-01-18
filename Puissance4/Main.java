@@ -22,7 +22,7 @@ public class Main {
                             "4- Quitter\n",
         };
         try (Scanner scanner = new Scanner(System.in)) {
-            int option = 5;
+            int option = 0;
             while (true){
                 printMenu(options);
                 try {
@@ -58,7 +58,7 @@ public class Main {
                         continue;
                     } else if(answer.equals("N") || answer.equals("n")) {
                         System.out.println("\nMerci d'avoir utilisé notre programme ! Nous vous souhaitons une excellente journée !\n");
-                        break;
+                        System.exit(0);
                     } else {
                         break;
                     }
