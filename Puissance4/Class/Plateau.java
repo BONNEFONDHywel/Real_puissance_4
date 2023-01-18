@@ -4,21 +4,17 @@ import java.util.Scanner;
 
 public class Plateau {
 
-    public static void name(String[] player) {
-        try (Scanner scan = new Scanner(System.in)) {
-            System.out.println("\nJoueur 1, choisissez votre pseudo\n");
-            String player1Name = scan.nextLine();
-            System.out.println("\nJoueur 1, choisissez votre symbole\n");
-            char player1Symbol = scan.nextLine().charAt(0);
-            System.out.println("\nJoueur 2, choisissez votre pseudo\n");
-            String player2Name = scan.nextLine();
-            System.out.println("\nJoueur 2, choisissez votre symbole\n");
-            char player2Symbol = scan.nextLine().charAt(0);
-        }
-    }
-
     public static void main(String[] args) {
 		try (Scanner in = new Scanner(System.in)) {
+			System.out.println("\nJoueur 1, choisissez votre pseudo\n");
+            String player1Name = in.nextLine();
+            System.out.println("\nJoueur 1, choisissez votre symbole\n");
+            char player1Symbol = in.nextLine().charAt(0);
+            System.out.println("\nJoueur 2, choisissez votre pseudo\n");
+            String player2Name = in.nextLine();
+            System.out.println("\nJoueur 2, choisissez votre symbole\n");
+            char player2Symbol = in.nextLine().charAt(0);
+			System.out.println(' ');
             char[][] grid = new char[6][7];
             
             //initialize array
@@ -29,8 +25,9 @@ public class Plateau {
             }
             
             int turn = 1;
-            char player = 'R';
-            boolean winner = false;		
+			String currentPlayer = player1Name;
+            char player = player1Symbol;
+            boolean winner = false;
             
             //play a turn
             while (winner == false && turn <= 42){
@@ -38,7 +35,7 @@ public class Plateau {
             	int play;
             	do {
             		display(grid);
-                    System.out.print("Player " + player + ", choose a column: ");
+                    System.out.print("Joueur " + currentPlayer + ", choisissez une colonne, s'il vous plaît : ");
                     play = in.nextInt()-1;
             		
             		//validate play
@@ -58,10 +55,12 @@ public class Plateau {
             	winner = Victoire.isWinner(player,grid);
             	
             	//switch players
-            	if (player == 'R'){
-            		player = 'B';
+            	if (currentPlayer == player1Name){
+					currentPlayer = player2Name;
+            		player = player2Symbol;
             	}else{
-            		player = 'R';
+					currentPlayer = player1Name;
+            		player = player1Symbol;
             	}
             	
             	turn++;
@@ -69,13 +68,13 @@ public class Plateau {
             display(grid);
             
             if (winner){
-            	if (player=='R'){
-            		System.out.println("Black won");
+            	if (player==player1Symbol){
+            		System.out.println(player2Name + " a gagné ! Félicitations !\n");
             	}else{
-            		System.out.println("Red won");
+            		System.out.println(player1Name + " a gagné ! Félicitations !\n");
             	}
             }else{
-            	System.out.println("Tie game");
+            	System.out.println("Il y a égalité. Bien joué au deux joueurs !\n");
             }
         }
 		
@@ -105,13 +104,13 @@ public class Plateau {
 	public static boolean validate(int column, char[][] grid){
         //valid column?
         if (column < 0 || column > grid[0].length){
-            System.out.println("Veuillez choisir une colonne non remplie entre 1 et 7.");
+            System.out.println("\nVeuillez choisir une colonne non remplie entre 1 et 7.\n");
             return false;
         }
     
         //full column?
         if (grid[0][column] != ' '){
-            System.out.println("Cette colonne est remplie, veuillez en choisir une autre.");
+            System.out.println("\nCette colonne est remplie, veuillez en choisir une autre.\n");
             return false;
         }
 		

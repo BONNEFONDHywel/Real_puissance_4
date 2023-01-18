@@ -3,7 +3,7 @@ package Puissance4.Class;
 public class Victoire {
 
     public static boolean isWinner(char player, char[][] grid){
-		//check for 4 across
+		//Si 4 mêmes pions sont alignés horizontalement, alors mettre la condition de victoire à "True"
 		for(int row = 0; row<grid.length; row++){
 			for (int col = 0;col < grid[0].length - 3;col++){
 				if (grid[row][col] == player   && 
@@ -14,7 +14,7 @@ public class Victoire {
 				}
 			}			
 		}
-		//check for 4 up and down
+		//Si 4 mêmes pions sont alignés verticalement, alors mettre la condition de victoire à "True"
 		for(int row = 0; row < grid.length - 3; row++){
 			for(int col = 0; col < grid[0].length; col++){
 				if (grid[row][col] == player   && 

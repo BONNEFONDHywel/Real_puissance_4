@@ -3,6 +3,9 @@ package Puissance4;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import Puissance4.Class.Plateau;
+
+// Classe principale pour activer le puissance 4
 public class Main {
     
     public static void printMenu(String[] options){
@@ -46,7 +49,8 @@ public class Main {
                 }
             }
             while(true){
-                
+                Plateau.main(args);
+                break;
             }
         }
     }
