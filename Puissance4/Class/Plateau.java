@@ -2,48 +2,62 @@ package Puissance4.Class;
 
 import java.util.Scanner;
 
+// Cette classe est créée pour effectuer une partie de puissance 4 dans le mode 2 joueurs
 public class Plateau {
 
     public static void main(String[] args) {
 		try (Scanner in = new Scanner(System.in)) {
-			System.out.println("\nJoueur 1, choisissez votre pseudo\n");
-            String player1Name = in.nextLine();
-            System.out.println("\nJoueur 1, choisissez votre symbole\n");
-            char player1Symbol = in.nextLine().charAt(0);
-            System.out.println("\nJoueur 2, choisissez votre pseudo\n");
-            String player2Name = in.nextLine();
-            System.out.println("\nJoueur 2, choisissez votre symbole\n");
-            char player2Symbol = in.nextLine().charAt(0);
-			System.out.println(' ');
+				// Les 2 joueurs choisissent leurs pseudonyme et leurs pions (représentés par des symboles)
+				System.out.println("\nJoueur 1, choisissez votre pseudo\n");
+				String player1Name = in.nextLine();
+				System.out.println("\nJoueur 1, choisissez votre symbole\n");
+				char player1Symbol = in.nextLine().charAt(0);
+				System.out.println("\nJoueur 2, choisissez votre pseudo\n");
+				String player2Name = in.nextLine();
+				System.out.println("\nJoueur 2, choisissez votre symbole\n");
+				char player2Symbol = in.nextLine().charAt(0);
+				System.out.println(' ');
+			// Création de la grille
             char[][] grid = new char[6][7];
             
-            //initialize array
+            // Création des cases pour placer les pions
             for (int row = 0; row < grid.length; row++){
             	for (int col = 0; col < grid[0].length; col++){
             		grid[row][col] = ' ';
             	}
             }
             
+			// Initialisation de certains paramètres avant une partie
+
+			// Le nombre de tours, initialisé à 1
             int turn = 1;
+
+			// Le joueur actuel à jouer
 			String currentPlayer = player1Name;
+
+			// Le symbole du premier joueur
             char player = player1Symbol;
+
+			// La condition de victoire, initialisé à "false"
             boolean winner = false;
             
-            //play a turn
+            // Pendant un tour
             while (winner == false && turn <= 42){
             	boolean validPlay;
             	int play;
             	do {
+					// Afficher l'état de la grille actuelle, le joueur choisit une colonne où mettre son pion
             		display(grid);
                     System.out.print("Joueur " + currentPlayer + ", choisissez une colonne, s'il vous plaît : ");
                     play = in.nextInt()-1;
+					System.out.println(' ');
             		
-            		//validate play
+					// Appelle la fonction validate en-dessous pour vérifier ses conditions
             		validPlay = validate(play,grid);
             		
             	}while (validPlay == false);
             	
-            	//drop the checker
+            	// Si les conditions de la fonction validate ne sont pas remplies, placer le pion du joueur dans la colonne respective
             	for (int row = grid.length-1; row >= 0; row--){
             		if(grid[row][play] == ' '){
             			grid[row][play] = player;
@@ -51,10 +65,10 @@ public class Plateau {
             		}
             	}
             	
-            	//determine if there is a winner
+            	// Détermine s'il y a un vainqueur
             	winner = Victoire.isWinner(player,grid);
             	
-            	//switch players
+            	// Permet d'échanger les joueurs et leurs symbole après un tour
             	if (currentPlayer == player1Name){
 					currentPlayer = player2Name;
             		player = player2Symbol;
@@ -63,10 +77,14 @@ public class Plateau {
             		player = player1Symbol;
             	}
             	
+				// Augmente le nombre de tours de 1
             	turn++;
             }
+
+			// Affiche l'état de la grille après l'alignement de 4 pions semblables
             display(grid);
             
+			// Si un vainqueur a été déclaré, effectuer cette condition
             if (winner){
             	if (player==player1Symbol){
             		System.out.println(player2Name + " a gagné ! Félicitations !\n");
@@ -80,6 +98,7 @@ public class Plateau {
 		
 	}
 	
+	// Permet d'afficher la grille sur le terminal
 	public static void display(char[][] grid){
 		System.out.println(" 1 2 3 4 5 6 7");
 		System.out.println("---------------");
@@ -96,24 +115,21 @@ public class Plateau {
 		System.out.println();
 	}
 	
-	/**
-	* @param column
-	* @param grid
-	* @return
-	*/
+
 	public static boolean validate(int column, char[][] grid){
-        //valid column?
+        // Si un chiffre n'étant pas entre 1 et 7 est écrit pour le choix d'une colonne, renvoie cette erreur
         if (column < 0 || column > grid[0].length){
             System.out.println("\nVeuillez choisir une colonne non remplie entre 1 et 7.\n");
             return false;
         }
     
-        //full column?
+        // Si une colonne pleine est sélectionnée, renvoie cette erreur
         if (grid[0][column] != ' '){
             System.out.println("\nCette colonne est remplie, veuillez en choisir une autre.\n");
             return false;
         }
 		
+		// Sinon, passe cette fonction
 		return true;
 	}
 	

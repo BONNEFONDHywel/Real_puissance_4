@@ -22,7 +22,7 @@ public class Main {
                             "4- Quitter\n",
         };
         try (Scanner scanner = new Scanner(System.in)) {
-            int option = 5;
+            int option = 0;
             while (true){
                 printMenu(options);
                 try {
@@ -49,8 +49,20 @@ public class Main {
                 }
             }
             while(true){
-                Plateau.main(args);
-                break;
+                try (Scanner sh = new Scanner(System.in)) {
+                    Plateau.main(args);
+                    System.out.println("Voulez-vous rejouer ? O (oui)/N (non)");
+                    String answer = sh.nextLine();
+                    if (answer.equals("O") || answer.equals("o")) {
+                        System.out.println("Ok, jouons encore une fois !");
+                        continue;
+                    } else if(answer.equals("N") || answer.equals("n")) {
+                        System.out.println("\nMerci d'avoir utilisé notre programme ! Nous vous souhaitons une excellente journée !\n");
+                        System.exit(0);
+                    } else {
+                        break;
+                    }
+                }
             }
         }
     }
