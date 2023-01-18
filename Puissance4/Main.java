@@ -49,8 +49,20 @@ public class Main {
                 }
             }
             while(true){
-                Plateau.main(args);
-                break;
+                try (Scanner sh = new Scanner(System.in)) {
+                    Plateau.main(args);
+                    System.out.println("Voulez-vous rejouer ? O (oui)/N (non)");
+                    String answer = sh.nextLine();
+                    if (answer.equals("O") || answer.equals("o")) {
+                        System.out.println("Ok, jouons encore une fois !");
+                        continue;
+                    } else if(answer.equals("N") || answer.equals("n")) {
+                        System.out.println("\nMerci d'avoir utilisé notre programme ! Nous vous souhaitons une excellente journée !\n");
+                        break;
+                    } else {
+                        break;
+                    }
+                }
             }
         }
     }
