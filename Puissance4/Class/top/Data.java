@@ -1,4 +1,4 @@
-package Puissance4.Class.top;
+package Puissance4.Class;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,22 +14,8 @@ import java.io.PrintWriter;
 import java.text.ParseException;
 
 public class Data{
- 
-    private static String nom;
-    private static int nbr;
 
-    public static String getNom() {
-        return nom;
-    }
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-    public static int getNbr() {
-        return nbr;
-    }
-    public void setNbr(int nbr) {
-        this.nbr = nbr;
-    }
+    private static Player player;
 
 
     private static final String SEPARATEUR = ";";
@@ -41,8 +27,8 @@ public class Data{
             while (ligne != null) {
                 String[] tab = ligne.split(SEPARATEUR);
                 Data c = new Data();
-                c.setNom(tab[0]);
-                c.setNbr(Integer.parseInt( tab[1]));
+                //Player.setNom(tab[0]);
+                //Player.setNbr(Integer.parseInt( tab[1]));
             }
         }
         return list;
@@ -60,7 +46,8 @@ public class Data{
             */
 
         try (PrintWriter pw2 = new PrintWriter(new BufferedWriter(new FileWriter("Data.csv", true)))) {
-            pw2.println(nom + " : " + nbr);
+            pw2.println(player.getNom() + " : " + );
+
         }catch(IOException e){
             System.out.println("erreur");
         }
