@@ -1,8 +1,8 @@
 # Real_puissance_4
 
-Hywel BONNEFOND (Scrum master)
-Guillaume DEPECKER
-Esteban VILAFRANCA
+- Hywel BONNEFOND (Scrum master)
+- Guillaume DEPECKER
+- Esteban VILAFRANCA
 
 Hywel a créé le menu avec les parties de puissance 4 fonctionnel en mode 2 joueurs (la grille et ses cases, les joueurs et leurs symboles comme pions, le déroulement d'une partie, les conditions de victoires).
 Il devait s'occuper aussi de la story rejouer et retour au menu, quand une partie est terminée.
