@@ -2,10 +2,17 @@ package Puissance4.Class;
 
 import java.util.Scanner;
 
+import Puissance4.Class.top.Data;
+
 // Cette classe est créée pour effectuer une partie de puissance 4 dans le mode 2 joueurs
 public class Plateau {
 
-    public static void main(String[] args) {
+    public static String nbcoups1;
+	public static String nbcoups2;
+	public static int nbcoups;
+
+
+	public static void main(String[] args) {
 		try (Scanner in = new Scanner(System.in)) {
 				// Les 2 joueurs choisissent leurs pseudonyme et leurs pions (représentés par des symboles)
 				System.out.println("\nJoueur 1, choisissez votre pseudo\n");
@@ -31,6 +38,9 @@ public class Plateau {
 
 			// Le nombre de tours, initialisé à 1
             int turn = 1;
+
+			int nbcoups1 = 0;
+			int nbcoups2 = 0;
 
 			// Le joueur actuel à jouer
 			String currentPlayer = player1Name;
@@ -70,9 +80,11 @@ public class Plateau {
             	
             	// Permet d'échanger les joueurs et leurs symbole après un tour
             	if (currentPlayer == player1Name){
+					nbcoups1++;
 					currentPlayer = player2Name;
             		player = player2Symbol;
             	}else{
+					nbcoups2++;
 					currentPlayer = player1Name;
             		player = player1Symbol;
             	}
@@ -88,6 +100,9 @@ public class Plateau {
             if (winner){
             	if (player==player1Symbol){
             		System.out.println(player2Name + " a gagné ! Félicitations !\n");
+					nbcoups = nbcoups1;
+					Data top = new Data();
+					top.writeTop10();
             	}else{
             		System.out.println(player1Name + " a gagné ! Félicitations !\n");
             	}
