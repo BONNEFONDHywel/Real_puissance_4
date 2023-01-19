@@ -1,4 +1,4 @@
-package Puissance4.Class;
+package Puissance4.Class.top;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +22,7 @@ public class Data{
 
     public static List<Data> readTop10() throws FileNotFoundException, IOException, ParseException {
         List<Data> list = new ArrayList<>();
-        try (BufferedReader buf = new BufferedReader(new FileReader("data.csv"))) {
+        try (BufferedReader buf = new BufferedReader(new FileReader("Data.csv"))) {
             String ligne = buf.readLine();
             while (ligne != null) {
                 String[] tab = ligne.split(SEPARATEUR);
@@ -34,27 +34,31 @@ public class Data{
         return list;
     }
 
-    public static void writeTop10(List<Data> list){
-        /*
-            * PrintWriter pw = new PrintWriter(new BufferedWriter(new
-            * FileWriter("contacts.csv", true)));
-            * try {
-            * pw.println(this.toString());
-            * } finally {
-            * pw.close();
-            * }
-            */
+    private Player nbcoups;
 
-        try (PrintWriter pw2 = new PrintWriter(new BufferedWriter(new FileWriter("Data.csv", true)))) {
-            pw2.println(player.getNom() + " : " + );
+    public void writeTop10(){
+        
+      
+        try {
+        
+            FileWriter writer = new FileWriter("Data.csv", true);
+            BufferedWriter bw1 = new BufferedWriter(writer); 
+            PrintWriter pw2 = new PrintWriter(bw1);
+            
+            
+            
+            pw2.println(player + " : " + nbcoups);
+
 
         }catch(IOException e){
             System.out.println("erreur");
         }
+                
+
+        
+        
 
         //ecrire dans le fichier les données de la list
-    }
-}
-
     
-
+}
+}
