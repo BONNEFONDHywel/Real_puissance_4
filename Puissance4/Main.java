@@ -16,6 +16,7 @@ public class Main {
         System.out.print("Veullez choisir une option parmi les quatre proposés en tapant le bon chiffre, s'il vous plaît : ");
     }
     public static void main(String[] args) {
+        // Initialisation des choix possibles sur le terminal pour l'utilisateur
         String[] options = {"\n1- Affronter l'ordinateur",
                             "2- Affronter un joueur",
                             "3- Regarder les meilleures scores",
